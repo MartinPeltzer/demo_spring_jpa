@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
     @GetMapping(value = "/")
-    public ResponseEntity<Object> getCustomers() {
+    public ResponseEntity<Object> sayHello() {
         return new ResponseEntity<>("Hello from demo_spring_jpa", HttpStatus.OK);
     }
 }
