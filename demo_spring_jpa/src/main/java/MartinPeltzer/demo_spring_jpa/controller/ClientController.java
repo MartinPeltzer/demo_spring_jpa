@@ -21,26 +21,43 @@ public class ClientController {
         List<Client> clients = clientService.getAllClients();
         return new ResponseEntity<>(clients, HttpStatus.OK);
     }
+    //localhost:8080/clients
 
-    //Deze lijkt niet in de uitwerking te staan, wellicht later aangepast-->Deze is omvangrijker 01:10:27 (les 4)
     @GetMapping(value = "/clients/{id}")
     public ResponseEntity<Object> getClients(@PathVariable("id") long id) {
         Client client = clientService.getClientById(id);
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
+    //localhost:8080/clients/1
 
     @DeleteMapping(value = "/clients/{id}")
     public ResponseEntity<Object> deleteClient(@PathVariable("id") long id) {
         clientService.deleteClient(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT); //dit is de foutcode die hij geeft als het niet lukt
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
+    //localhost:8080/clients/1
 
     @PostMapping(value = "/clients")
     public ResponseEntity<Object> saveClient(@RequestBody Client client) {
         long newId = clientService.saveClient(client);
         return new ResponseEntity<>(newId, HttpStatus.CREATED);
     }
+    //localhost:8080/clients
+
+    @PutMapping(value = "/clients/{id}")
+    public ResponseEntity<Object> updateClient(@PathVariable("id") int id, @RequestBody Client client) {
+        clientService.updateClient(id, client); //clientUpdate bestaat dan nog niet-->In de clientService gaan maken
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    //localhost:8080/clients/1
+
+    @GetMapping(value = "/clients/lastname/{lastname}")
+    public ResponseEntity<Object> getClientByLastName(@PathVariable("lastname") String lastName) {
+        Client client = clientService.getClientByLastName(lastName);
+        return new ResponseEntity<>(client, HttpStatus.OK);
+    }
+    //localhost:8080/clients/lastname/Hallo
 }
 
 
