@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 public class ClientController {
-    //Ik heb hier nog geen service gemaakt. Dit werkt nog niet.
+
     @Autowired
     private ClientRepository clientRepository;
 
